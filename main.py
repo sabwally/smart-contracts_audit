@@ -234,7 +234,7 @@ lbl_in = tk.Label(fr_text, text="Исходный код контракта:", f
 lbl_out = tk.Label(fr_text, text="Скорректированный код контракта:", fg="red", font='Times 12')
 txt_edit_in = st.ScrolledText(fr_text, width=70, height=30, wrap=tk.NONE)
 # txt_edit_in.resizable(true, true)
-txt_edit_out = st.ScrolledText(fr_text, width=70, height=30)
+txt_edit_out = st.ScrolledText(fr_text, width=70, height=30, wrap=tk.NONE)
 # txt_edit_out.resizable(true, true)
 btn_open = tk.Button(fr_buttons, text="Выбрать контракт", command=open_file)
 btn_save = tk.Button(fr_out, text="Сохранить новый контракт как...", command=save_file)
