@@ -1,0 +1,34 @@
+pragma solidity ^0.4.0;
+contract Counter {
+    uint constant c;
+    int private count = 0;
+    uint256 d;
+    uint constant cc = 1;
+    uint128 b = 2.5 + a + 0.5;
+    uint128 b = 2.5 + a + 0.5;//test!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    uint[] x;
+    uint[] memory a = new uint[](7);
+    bytes memory b = new bytes(len);
+    g([uint(1), 2, 3]); //!!!!!!!!!!!!!!!
+    bytes memory b = new bytes(200); //!!!!!!!!
+    mapping (uint => Funder) funders;
+	
+    function incrementCounter() public {
+        count += 1;
+    }
+    function decrementCounter() public {
+        count -= 1;
+    } /* */
+    function getCount() public constant returns (int) {
+/*ddfvgv
+delegatecall()
+vegfewg
+*/
+;
+        return count;
+    }
+//
+
+  delegatecall() 
+//тест call 
+}
