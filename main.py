@@ -219,14 +219,14 @@ frame2.pack(fill='both', expand=True)
 
 notebook.add(frame1, text='Код смарт-контракта')
 notebook.add(frame2, text='Настройка проверок уязвимостей')
-'''
+
 frame1.rowconfigure(0, minsize=10, weight=1)
 frame1.rowconfigure(1, minsize=10, weight=1)
 frame1.columnconfigure(0, minsize=10, weight=1)
 frame1.columnconfigure(1, minsize=10, weight=1)
 frame1.rowconfigure(2, minsize=10, weight=1)
 frame1.columnconfigure(2, minsize=10, weight=1)
-'''
+
 fr_buttons = tk.Frame(frame1)
 fr_text = tk.Frame(frame1)
 fr_out = tk.Frame(frame1)
@@ -254,8 +254,6 @@ info.add_command(label='HELP', command=click)
 menu.add_cascade(label='Info', menu=info)
 
 window.config(menu=menu)
-
-
 
 btn_open.grid(row=0, column=0, sticky="ew", padx=5, pady=5)
 btn_start.grid(row=0, column=1, sticky="ew", padx=5)
