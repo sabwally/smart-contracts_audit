@@ -52,7 +52,7 @@ def click():
     f.close()
     re = tk.Toplevel()
     re.title("HELP")
-    re.geometry("900x450")
+    re.geometry("1100x450")
     text_area = st.ScrolledText(re, width=100, height=20, font='Times 12')
     text_area.pack(fill=tk.BOTH, side=tk.LEFT, expand=True)
     text_area.insert(tk.INSERT, text)
