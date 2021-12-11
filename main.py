@@ -82,7 +82,7 @@ def delete_l():
         save_l()
 
 
-class W_add(tk.Toplevel):
+class w_add(tk.Toplevel):
     def __init__(self):
         super().__init__()
 
@@ -125,12 +125,13 @@ class W_add(tk.Toplevel):
         self.btn_cancel.pack(side=tk.RIGHT, ipadx=10)
 
     def save_add(self):
-        table.insert('', 'end', values=(self.ent_code.get(), self.ent_name.get(), self.ent_check.get(), self.ent_path.get(), self.ent_content.get()))
+        table.insert('', 'end', values=(
+        self.ent_code.get(), self.ent_name.get(), self.ent_check.get(), self.ent_path.get(), self.ent_content.get()))
         save_l()
         self.destroy()
 
 
-class W_change(tk.Toplevel):
+class w_change(tk.Toplevel):
     def __init__(self):
         super().__init__()
 
@@ -184,17 +185,18 @@ class W_change(tk.Toplevel):
 
     def save_change(self):
         row_id = table.focus()
-        table.item(row_id, text="", values=(self.ent_code.get(), self.ent_name.get(), self.ent_check.get(), self.ent_path.get(), self.ent_content.get()))
+        table.item(row_id, text="", values=(
+        self.ent_code.get(), self.ent_name.get(), self.ent_check.get(), self.ent_path.get(), self.ent_content.get()))
         save_l()
         self.destroy()
 
 
 def add_l():
-    wn = W_add()
+    wn = w_add()
 
 
 def change_l():
-    wn = W_change()
+    wn = w_change()
 
 
 def bye():
@@ -204,11 +206,10 @@ def bye():
 window = tk.Tk()
 window.title("Проверка смарт-контрактов")
 window.geometry("1200x650")
-window.resizable(False, False) #!
+window.resizable(False, False)  # !
 
 notebook = ttk.Notebook(window)
 notebook.pack(pady=10, expand=True)
-
 
 frame1 = tk.Frame(notebook, width=400, height=280)
 frame2 = tk.Frame(notebook, width=400, height=280)
@@ -231,10 +232,10 @@ fr_text = tk.Frame(frame1)
 fr_out = tk.Frame(frame1)
 lbl_in = tk.Label(fr_text, text="Исходный код контракта:", fg="red", font='Times 12')
 lbl_out = tk.Label(fr_text, text="Скорректированный код контракта:", fg="red", font='Times 12')
-txt_edit_in = st.ScrolledText(fr_text, width=70, height=30)
-#txt_edit_in.resizable(true, true)
+txt_edit_in = st.ScrolledText(fr_text, width=70, height=30, wrap=tk.NONE)
+# txt_edit_in.resizable(true, true)
 txt_edit_out = st.ScrolledText(fr_text, width=70, height=30)
-#txt_edit_out.resizable(true, true)
+# txt_edit_out.resizable(true, true)
 btn_open = tk.Button(fr_buttons, text="Выбрать контракт", command=open_file)
 btn_save = tk.Button(fr_out, text="Сохранить новый контракт как...", command=save_file)
 btn_start = tk.Button(fr_buttons, text="Начать проверку", command=go)
@@ -264,10 +265,16 @@ txt_edit_out.grid(row=1, column=1, sticky="ew", padx=5)
 btn_save.grid(row=0, column=0, sticky="ew", padx=5, pady=5)
 btn_end.grid(row=0, column=1, sticky="ew", padx=5)
 
+scrollX_in = tk.Scrollbar(fr_text, command=txt_edit_in.xview, orient=tk.HORIZONTAL)
+txt_edit_in.config(xscrollcommand=scrollX_in.set)
+scrollX_in.grid(row=2, column=0, sticky="ew")
+scrollX_out = tk.Scrollbar(fr_text, command=txt_edit_out.xview, orient=tk.HORIZONTAL)
+txt_edit_out.config(xscrollcommand=scrollX_out.set)
+scrollX_out.grid(row=2, column=1, sticky="ew")
+
 fr_buttons.grid(row=0, column=0, sticky="n")
 fr_text.grid(row=1, column=0, sticky="n")
 fr_out.grid(row=2, column=0, sticky="n")
-
 
 f = codecs.open('IniChecklist.txt', "r", "utf-8")
 text = f.read()
@@ -283,11 +290,11 @@ table = ttk.Treeview(frame2, show='headings')
 table['columns'] = heads
 
 for header in heads:
-            table.heading(header, text=header, anchor=tk.CENTER)
-            table.column(header, anchor="w", stretch=False)
+    table.heading(header, text=header, anchor=tk.CENTER)
+    table.column(header, anchor="w", stretch=False)
 
 for row in lst:
-    table.insert('',tk.END, values=row)
+    table.insert('', tk.END, values=row)
 
 table.column('Код', minwidth=0, width=100)
 table.column('Название', minwidth=0, width=400)
@@ -299,7 +306,7 @@ scrolly = ttk.Scrollbar(frame2, command=table.yview)
 table.configure(yscrollcommand=scrolly.set)
 scrolly.pack(side=tk.RIGHT, fill=tk.Y)
 
-scrollx = ttk.Scrollbar(frame2,orient='horizontal', command=table.xview)
+scrollx = ttk.Scrollbar(frame2, orient='horizontal', command=table.xview)
 table.configure(xscrollcommand=scrollx.set)
 scrollx.pack(side=tk.BOTTOM, fill=tk.X)
 

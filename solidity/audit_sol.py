@@ -5,6 +5,7 @@ from solidity import vulnerability as v
 
 import codecs
 
+
 def audit(text):
     report = "Отчёт:\n"
     version = []
@@ -12,17 +13,17 @@ def audit(text):
     program = ''
     code_str = ""
 
-    #заменяем комментарии
+    # заменяем комментарии
     text = v.del_comment(text)
-    #преобразуем пробелы
-    #text = v.del_space(text)
+    # преобразуем пробелы
+    # text = v.del_space(text)
 
     # Уязвимости:
     report, text, i_ver = v.sol_version(text, report, version, i_ver)
     if i_ver != -1:
 
         f = codecs.open('IniChecklist.txt', "r", "utf-8")
-        try :
+        try:
             text_to_check = f.read()
         finally:
             f.close()
@@ -52,7 +53,7 @@ def audit(text):
                     report, text = v.def_notifcall(text, report, version, i_ver)
                 elif l[0] == 'non_init_var':
                     report, text = v.non_init_var(text, report, version, i_ver)
-                else :
+                else:
                     # запуск внешней проверки динамически
                     try:
                         # открываем файл с кодом проверки и считываем содержимое
@@ -81,18 +82,17 @@ def audit(text):
                     except Exception as e:
                         report += '\nПри выполнении проверки ... произошла ошибка ' + str(e)
 
-
-    #восстанавливаем комментарии
+    # восстанавливаем комментарии
     text = v.repair_comment(text)
     program = text
 
     re = tk.Toplevel()
     re.title("Отчёт")
     re.geometry("1200x500")
-    #label = tk.Label(re, text=report, font='Times 12', justify=tk.LEFT)
+    # label = tk.Label(re, text=report, font='Times 12', justify=tk.LEFT)
     text_area = st.ScrolledText(re, width=140, height=25, font='Times 12')
     text_area.grid(column=0, pady=10, padx=10)
     text_area.insert(tk.INSERT, report)
     text_area.configure(state='disabled')
-    #label.pack()
+    # label.pack()
     return program
