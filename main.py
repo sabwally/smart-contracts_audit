@@ -242,19 +242,20 @@ btn_start = tk.Button(fr_buttons, text="Начать проверку", command=
 btn_end = tk.Button(fr_out, text="Выход", command=bye)
 
 menu = Menu(window)
-doc = Menu(menu, tearoff=0)
-ffile = Menu(menu, tearoff=0)
+main = Menu(menu, tearoff=0)
+main.add_command(label='Выбрать контракт', command=open_file)
+main.add_command(label='Проверить контракт', command=go)
+main.add_command(label='Сохранить новый контракт', command=save_file)
+main.add_command(label='Выход', command=window.destroy)
+menu.add_cascade(label='Файл', menu=main)
 
-ffile.add_command(label='Выбрать контракт', command=click)
-ffile.add_command(label='Проверить контракт', command=click)
-ffile.add_command(label='Сохранить новый контракт', command=click)
-ffile.add_command(label='Выход', command=click)
-menu.add_cascade(label='Файл', menu=ffile)
-
-doc.add_command(label='HELP', command=click)
-menu.add_cascade(label='Информация о программе', menu=doc)
+info = Menu(menu, tearoff=0)
+info.add_command(label='HELP', command=click)
+menu.add_cascade(label='Info', menu=info)
 
 window.config(menu=menu)
+
+
 
 btn_open.grid(row=0, column=0, sticky="ew", padx=5, pady=5)
 btn_start.grid(row=0, column=1, sticky="ew", padx=5)
