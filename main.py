@@ -39,7 +39,7 @@ def save_file():
 
 def go():
     text = txt_edit_in.get("1.0", tk.END)
-    ask = messagebox.askquestion('Страт проверки...', 'Welcome to Solidity!\nНачать проверку?')
+    ask = messagebox.askquestion('Старт проверки...', 'Welcome to Solidity!\nНачать проверку?')
     if ask == 'yes':
         program = solidity.audit(text)
         txt_edit_out.delete("1.0", tk.END)
@@ -219,14 +219,14 @@ frame2.pack(fill='both', expand=True)
 
 notebook.add(frame1, text='Код смарт-контракта')
 notebook.add(frame2, text='Настройка проверок уязвимостей')
-
+'''
 frame1.rowconfigure(0, minsize=10, weight=1)
 frame1.rowconfigure(1, minsize=10, weight=1)
 frame1.columnconfigure(0, minsize=10, weight=1)
 frame1.columnconfigure(1, minsize=10, weight=1)
 frame1.rowconfigure(2, minsize=10, weight=1)
 frame1.columnconfigure(2, minsize=10, weight=1)
-
+'''
 fr_buttons = tk.Frame(frame1)
 fr_text = tk.Frame(frame1)
 fr_out = tk.Frame(frame1)
