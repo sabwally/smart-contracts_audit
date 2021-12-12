@@ -291,7 +291,7 @@ table['columns'] = heads
 for header in heads:
     table.heading(header, text=header, anchor=tk.CENTER)
     table.column(header, anchor="w", stretch=False)
-
+table.heading('Описание уязвимости', text='Описание уязвимости', anchor="w")
 for row in lst:
     table.insert('', tk.END, values=row)
 
@@ -299,7 +299,7 @@ table.column('Код', minwidth=0, width=100)
 table.column('Название', minwidth=0, width=400)
 table.column('Проверять?', minwidth=0, width=75)
 table.column('Файл для внешней проверки', minwidth=0, width=420)
-table.column('Описание уязвимости', minwidth=0, width=1000)
+table.column('Описание уязвимости', minwidth=0, width=3620)
 
 scrolly = ttk.Scrollbar(frame2, command=table.yview)
 table.configure(yscrollcommand=scrolly.set)
